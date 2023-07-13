@@ -1,7 +1,8 @@
 import {ReactElement} from 'react';
+import './Header.css';
 
 const Header: () => ReactElement | null = () => (
-    <header>
+    <header className='header'>
         <h1>Weather</h1>
     </header>
 );
