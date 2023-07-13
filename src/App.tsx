@@ -72,7 +72,13 @@ const App: React.FC = () => {
     return (
         <>
             <Header/>
-            <Search/>
+            <Search
+                city={input}
+                locations={locations}
+                onInputChange={onInputChange}
+                onLocationSelect={onLocationSelect}
+                onSearch={onSearch}
+            />
         </>
     );
 }
