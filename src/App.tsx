@@ -36,6 +36,14 @@ const App: React.FC = () => {
         setLocation(location);
     };
 
+    const onSearch = (): void => {
+        if (!location) {
+            return;
+        }
+
+        console.log(location);
+    };
+
     return (
         <>
             <Header/>
