@@ -1,13 +1,6 @@
 import React, {ReactElement, useState} from 'react';
 import './Search.css';
 
-const Search: () => ReactElement | null = () => {
-    const [city, setCity] = useState('');
-
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCity(event.target.value);
-    };
-
     const handleSearch = (): void => {
         console.log(city);
     };

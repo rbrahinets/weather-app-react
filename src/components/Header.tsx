@@ -1,7 +1,7 @@
-import {ReactElement} from 'react';
+import React from 'react';
 import './Header.css';
 
-const Header: () => ReactElement | null = () => (
+const Header: React.FC = () => (
     <header className='header'>
         <h1>Weather</h1>
     </header>
