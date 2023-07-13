@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {LocationInterface} from './interfaces/LocationInterface';
 import {ForecastInterface} from './interfaces/ForecastInterface';
@@ -61,6 +61,13 @@ const App: React.FC = () => {
             })
             .catch((error) => console.error({error}));
     };
+
+    useEffect(() => {
+        if (location) {
+            setInput(location.name);
+            setLocations([]);
+        }
+    }, [location]);
 
     return (
         <>
