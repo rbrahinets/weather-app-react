@@ -1,7 +1,7 @@
 import React, {ReactElement, useState} from 'react';
 import './Search.css';
 
-    const handleSearch = (): void => {
+    const onInputChange = (): void => {
         console.log(city);
     };
 
@@ -9,13 +9,13 @@ import './Search.css';
         <div className='container'>
             <input
                 className='input'
-                type="text"
+                type='text'
                 value={city}
-                onChange={handleInputChange}
+                onChange={onInputChange}
             />
             <button
                 className='button'
-                onClick={handleSearch}
+                onClick={onSearch}
             >
                 Add
             </button>
