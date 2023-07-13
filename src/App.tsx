@@ -1,5 +1,6 @@
 import React, {ReactElement, useState} from 'react';
 import './App.css';
+import Header from './components/Header';
 
 const App: () => ReactElement | null = () => {
     const [city, setCity] = useState('');
@@ -13,20 +14,23 @@ const App: () => ReactElement | null = () => {
     };
 
     return (
-        <div className='container'>
-            <input
-                className='input'
-                type="text"
-                value={city}
-                onChange={handleInputChange}
-            />
-            <button
-                className='button'
-                onClick={handleSearch}
-            >
-                Add
-            </button>
-        </div>
+        <>
+            <Header/>
+            <div className='container'>
+                <input
+                    className='input'
+                    type="text"
+                    value={city}
+                    onChange={handleInputChange}
+                />
+                <button
+                    className='button'
+                    onClick={handleSearch}
+                >
+                    Add
+                </button>
+            </div>
+        </>
     );
 }
 
