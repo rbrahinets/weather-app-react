@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {LocationInterface} from './interfaces/LocationInterface';
+import {ForecastInterface} from './interfaces/ForecastInterface';
 import Header from './components/Header';
 import Search from './components/Search';
 
@@ -10,6 +11,7 @@ const App: React.FC = () => {
     const [input, setInput] = useState<string>('');
     const [locations, setLocations] = useState<[]>([]);
     const [location, setLocation] = useState<LocationInterface | null>(null);
+    const [forecast, setForecast] = useState<ForecastInterface | null>(null);
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value.trim();
@@ -41,7 +43,23 @@ const App: React.FC = () => {
             return;
         }
 
-        console.log(location);
+        getForecast(location);
+    };
+
+    const getForecast = (location: LocationInterface) => {
+        fetch(
+            `${BASE_URL}/data/2.5/forecast?q=${location.name}&appid=${process.env.REACT_APP_API_KEY}`
+        )
+            .then((res) => res.json())
+            .then((data) => {
+                const forecastData = {
+                    ...data.city,
+                    list: data.list.slice(0, 16),
+                };
+
+                setForecast(forecastData);
+            })
+            .catch((error) => console.error({error}));
     };
 
     return (
