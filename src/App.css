@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    flex: 1;
+    margin: 10px 5px 10px 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+    margin: 10px 10px 10px 5px;
+    padding: 10px 40px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #459DE9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: blue;
+}
+
+.button:focus {
+    outline: none;
+    background-color: blue;
+    box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.5);
+}

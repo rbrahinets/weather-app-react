@@ -5,12 +5,15 @@ const App: () => ReactElement | null = () => {
     const [city, setCity] = useState('');
 
     return (
-        <div className='App'>
+        <div className='container'>
             <input
+                className='input'
                 type="text"
                 value={city}
             />
-            <button>
+            <button
+                className='button'
+            >
                 Add
             </button>
         </div>
