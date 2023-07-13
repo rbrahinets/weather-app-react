@@ -1,8 +1,12 @@
-import {ReactElement, useState} from 'react';
+import React, {ReactElement, useState} from 'react';
 import './App.css';
 
 const App: () => ReactElement | null = () => {
     const [city, setCity] = useState('');
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCity(event.target.value);
+    };
 
     return (
         <div className='container'>
@@ -10,6 +14,7 @@ const App: () => ReactElement | null = () => {
                 className='input'
                 type="text"
                 value={city}
+                onChange={handleInputChange}
             />
             <button
                 className='button'
