@@ -8,6 +8,10 @@ const App: () => ReactElement | null = () => {
         setCity(event.target.value);
     };
 
+    const handleSearch = (): void => {
+        console.log(city);
+    };
+
     return (
         <div className='container'>
             <input
@@ -18,6 +22,7 @@ const App: () => ReactElement | null = () => {
             />
             <button
                 className='button'
+                onClick={handleSearch}
             >
                 Add
             </button>
