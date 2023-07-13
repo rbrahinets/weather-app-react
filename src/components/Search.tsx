@@ -1,10 +1,6 @@
 import React, {ReactElement, useState} from 'react';
 import './Search.css';
 
-    const onInputChange = (): void => {
-        console.log(city);
-    };
-
     return (
         <div className='container'>
             <input
