@@ -1,10 +1,18 @@
-import {ReactElement} from 'react';
+import {ReactElement, useState} from 'react';
 import './App.css';
 
 const App: () => ReactElement | null = () => {
+    const [city, setCity] = useState('');
+
     return (
         <div className='App'>
-            <h1>Weather App</h1>
+            <input
+                type="text"
+                value={city}
+            />
+            <button>
+                Add
+            </button>
         </div>
     );
 }
