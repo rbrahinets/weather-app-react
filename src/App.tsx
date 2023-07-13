@@ -79,6 +79,13 @@ const App: React.FC = () => {
                 onLocationSelect={onLocationSelect}
                 onSearch={onSearch}
             />
+
+            {forecast && (
+                <div>
+                    <h1>{forecast.name}, {forecast.country}</h1>
+                    <h1>{Math.round(forecast.list[0].main.temp - 273.15)}<sup>o</sup></h1>
+                </div>
+            )}
         </>
     );
 }
