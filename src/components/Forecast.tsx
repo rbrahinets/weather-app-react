@@ -104,6 +104,13 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                             {` ${Math.round(today.wind.speed)}`} m/s
                         </span>
                     </div>
+                    <div className='section-bottom-right-item'>
+                        Humidity:
+                        <span
+                            className={`bold ${temp > 0 ? 'color-hot' : 'color-cold'}`}>
+                        {` ${today.main.humidity}`}%
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
