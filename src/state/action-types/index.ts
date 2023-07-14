@@ -1,0 +1,6 @@
+export enum ActionType {
+    SET_INPUT = 'SET_INPUT',
+    SET_LOCATIONS = 'SET_LOCATIONS',
+    SET_LOCATION = 'SET_LOCATION',
+    SET_FORECAST = 'SET_FORECAST',
+}
