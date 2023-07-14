@@ -119,3 +119,11 @@ img {
 .color-cold {
     color: #459de9;
 }
+
+.background-color-hot {
+    background-color: #fffaf1;
+}
+
+.background-color-cold {
+    background-color: #f1f2ff;
+}
