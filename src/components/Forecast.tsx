@@ -111,6 +111,13 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                         {` ${today.main.humidity}`}%
                         </span>
                     </div>
+                    <div className='section-bottom-right-item'>
+                        Pressure:
+                        <span
+                            className={`bold ${temp > 0 ? 'color-hot' : 'color-cold'}`}>
+                            {` ${today.main.pressure}`}Pa
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
