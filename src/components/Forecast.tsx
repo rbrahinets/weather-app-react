@@ -50,7 +50,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
 
     return (
         <div className='forecast-container'>
-            <div className='section section-top'>
+            <div className={`section section-top ${temp > 0 ? 'background-color-hot' : 'background-color-cold'}`}>
                 <div className='section-top-left'>
                     <div className='bold'>{forecast.name}, {forecast.country}</div>
                     <div>{formattedDateTime}</div>
@@ -67,9 +67,9 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                     </div>
                 </div>
             </div>
-            <div className='section section-middle'>
+            <div className={`section section-middle ${temp > 0 ? 'background-color-hot' : 'background-color-cold'}`}>
             </div>
-            <div className='section section-bottom'>
+            <div className={`section section-bottom ${temp > 0 ? 'background-color-hot' : 'background-color-cold'}`}>
                 <div className='section-bottom-left'>
                     <div className='bold temp-container'>
                         <div className='temp-left-container temp-size temp-selected'>
