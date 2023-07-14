@@ -20,3 +20,12 @@ export const setLocations = (locations: LocationInterface[]) => {
         });
     };
 };
+
+export const setLocation = (location: LocationInterface | null) => {
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.SET_LOCATION,
+            payload: location,
+        });
+    };
+};
