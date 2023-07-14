@@ -5,6 +5,7 @@ import {State} from './state';
 import useForecast from './hooks/useForecast';
 import Header from './components/Header';
 import Search from './components/Search';
+import Forecast from './components/Forecast';
 
 const App: React.FC = () => {
     const {input} = useSelector((state: State) => state.input);
@@ -26,13 +27,9 @@ const App: React.FC = () => {
                 onLocationSelect={onLocationSelect}
                 onSearch={onSearch}
             />
-
             {forecast && (
                 <div className='center'>
-                    <div>
-                        <h1>{forecast.name}, {forecast.country}</h1>
-                        <h1>{Math.round(forecast.list[0].main.temp - 273.15)}<sup>o</sup></h1>
-                    </div>
+                    <Forecast forecast={forecast}/>
                 </div>
             )}
         </>
