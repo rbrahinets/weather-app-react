@@ -47,6 +47,15 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                     <div>{formattedDateTime}</div>
                 </div>
                 <div className='section-top-right'>
+                    <div className='section-left'>
+                        <img
+                            alt={`weather-icon-${today.weather[0].description}`}
+                            src={`http://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png`}
+                        />
+                    </div>
+                    <div className='section-right'>
+                        {today.weather[0].main}
+                    </div>
                 </div>
             </div>
             <div className='section section-middle'>
