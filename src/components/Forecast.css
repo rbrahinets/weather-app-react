@@ -58,6 +58,10 @@
     font-size: 10pt;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .section-left {
     float: left;
     width: 85%;
@@ -70,4 +74,36 @@
 
 img {
     width: 50px;
+}
+
+.temp-container {
+    display: flex;
+    text-align: left;
+}
+
+.temp-left-container {
+    flex: 1;
+}
+
+.temp-right-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.temp-top-container {
+    flex: 1;
+    display: flex;
+}
+
+.temp-selected {
+    color: #000000;
+}
+
+.temp-size {
+    font-size: 40pt;
+}
+
+.temp-type {
+    font-size: 20pt;
 }
