@@ -1,10 +1,11 @@
 import React from 'react';
 import './Header.css';
 
-const Header: React.FC = () => (
-    <header className='header'>
-        <h1>Weather</h1>
-    </header>
-);
+const Header: React.FC = () => {
+    return (
+        <header className='header'>
+        </header>
+    );
+}
 
 export default Header;
