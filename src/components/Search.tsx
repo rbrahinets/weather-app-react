@@ -1,7 +1,7 @@
 import React from 'react';
 import './Search.css';
 import {SearchInterface} from '../interfaces/SearchInterface';
-import {LocationInterface} from '../interfaces/LocationInterface';
+import Suggestions from './Suggestions';
 
 const Search: React.FC<SearchInterface> = (
     {
@@ -22,18 +22,10 @@ const Search: React.FC<SearchInterface> = (
                         value={city}
                         onChange={onInputChange}
                     />
-                    <ul className='list'>
-                        {locations.map((location: LocationInterface, index: number) => (
-                            <li key={location.name + '-' + index}>
-                                <button
-                                    className='item'
-                                    onClick={() => onLocationSelect(location)}
-                                >
-                                    {location.name}, {location.country}
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
+                    <Suggestions
+                        locations={locations}
+                        onSelect={onLocationSelect}
+                    />
                 </div>
                 <button className='button' onClick={onSearch}>
                     Add
