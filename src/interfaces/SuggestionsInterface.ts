@@ -1,6 +1,6 @@
 import {LocationInterface} from './LocationInterface';
 
 export interface SuggestionsInterface {
-    locations: [];
+    locations: LocationInterface[];
     onSelect: (location: LocationInterface) => void;
 }

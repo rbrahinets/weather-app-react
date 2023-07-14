@@ -3,7 +3,7 @@ import {LocationInterface} from './LocationInterface';
 
 export interface SearchInterface {
     city: string;
-    locations: [];
+    locations: LocationInterface[];
     onInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
     onLocationSelect: (location: LocationInterface) => void;
     onSearch: () => void;
