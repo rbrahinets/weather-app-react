@@ -1,18 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
+import {bindActionCreators} from 'redux';
+import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-import {ForecastInterface} from '../interfaces/ForecastInterface';
+import {actionCreators, State} from '../state';
 import {LocationInterface} from '../interfaces/LocationInterface';
 
 const BASE_URL: string = 'https://api.openweathermap.org';
 
 const useForecast = () => {
-    const [input, setInput] = useState<string>('');
-    const [locations, setLocations] = useState<[]>([]);
-    const [location, setLocation] = useState<LocationInterface | null>(null);
-    const [forecast, setForecast] = useState<ForecastInterface | null>(null);
+    const dispatch = useDispatch();
+    const {
+        setInput,
+        setLocations,
+        setLocation,
+        setForecast
+    } = bindActionCreators(
+        actionCreators,
+        dispatch
+    );
+    const {location} = useSelector((state: State) => state.location);
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value.trim();
+        const value: string = event.target.value.trim()
         setInput(event.target.value);
 
         if (value !== '') {
@@ -74,9 +83,6 @@ const useForecast = () => {
     }, [location]);
 
     return {
-        input,
-        locations,
-        forecast,
         onInputChange,
         onLocationSelect,
         onSearch

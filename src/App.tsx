@@ -1,14 +1,16 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import './App.css';
+import {State} from './state';
 import useForecast from './hooks/useForecast';
 import Header from './components/Header';
 import Search from './components/Search';
 
 const App: React.FC = () => {
+    const {input} = useSelector((state: State) => state.input);
+    const {locations} = useSelector((state: State) => state.locations);
+    const {forecast} = useSelector((state: State) => state.forecast);
     const {
-        input,
-        locations,
-        forecast,
         onInputChange,
         onLocationSelect,
         onSearch
