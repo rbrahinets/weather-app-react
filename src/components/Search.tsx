@@ -14,7 +14,7 @@ const Search: React.FC<SearchPropsInterface> = (
 ) => {
     return (
         <div className='center'>
-            <div className='container'>
+            <div className='search-container'>
                 <div className='input-container'>
                     <input
                         className='input'

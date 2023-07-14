@@ -4,12 +4,13 @@
     justify-content: center;
 }
 
-.container {
+.search-container {
     width: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    margin-left: 120px;
 }
 
 .input-container {
