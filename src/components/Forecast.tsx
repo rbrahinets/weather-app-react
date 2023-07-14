@@ -11,6 +11,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
         <div className='forecast-container'>
             <div className='section section-top'>
                 <div className='section-top-left'>
+                    <div className='bold'>{forecast.name}, {forecast.country}</div>
                 </div>
                 <div className='section-top-right'>
                 </div>
