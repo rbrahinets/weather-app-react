@@ -111,3 +111,11 @@ img {
 .section-bottom-right-item {
     padding: 10px;
 }
+
+.color-hot {
+    color: #ffa25b;
+}
+
+.color-cold {
+    color: #459de9;
+}
