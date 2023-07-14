@@ -57,3 +57,17 @@
     text-align: right;
     font-size: 10pt;
 }
+
+.section-left {
+    float: left;
+    width: 85%;
+}
+
+.section-right {
+    float: right;
+    width: 15%;
+}
+
+img {
+    width: 50px;
+}
