@@ -1,6 +1,6 @@
 import {LocationInterface} from './LocationInterface';
 
-export interface SuggestionsInterface {
+export interface SuggestionsPropsInterface {
     locations: LocationInterface[];
     onSelect: (location: LocationInterface) => void;
 }

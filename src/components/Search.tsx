@@ -1,9 +1,9 @@
 import React from 'react';
 import './Search.css';
-import {SearchInterface} from '../interfaces/SearchInterface';
+import {SearchPropsInterface} from '../interfaces/SearchPropsInterface';
 import Suggestions from './Suggestions';
 
-const Search: React.FC<SearchInterface> = (
+const Search: React.FC<SearchPropsInterface> = (
     {
         city,
         locations,

@@ -1,9 +1,9 @@
 import React from 'react';
 import './Suggestions.css';
-import {SuggestionsInterface} from '../interfaces/SuggestionsInterface';
+import {SuggestionsPropsInterface} from '../interfaces/SuggestionsPropsInterface';
 import {LocationInterface} from '../interfaces/LocationInterface';
 
-const Suggestions: React.FC<SuggestionsInterface> = (
+const Suggestions: React.FC<SuggestionsPropsInterface> = (
     {
         locations,
         onSelect
