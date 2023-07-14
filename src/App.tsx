@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import './App.css';
 import {LocationInterface} from './interfaces/LocationInterface';
 import {ForecastInterface} from './interfaces/ForecastInterface';
@@ -22,16 +23,19 @@ const App: React.FC = () => {
         }
     };
 
-    const getLocations
-        = async (city: string) => {
-        fetch(
-            `${BASE_URL}/geo/1.0/direct?q=${city.trim()}&limit=3&lang=en&appid=${
-                process.env.REACT_APP_API_KEY
-            }`
-        )
-            .then((response) => response.json())
-            .then((data) => setLocations(data))
-            .catch((error) => console.error({error}));
+    const getLocations = async (city: string) => {
+        try {
+            const response = await axios.get(
+                `${BASE_URL}/geo/1.0/direct?q=${city.trim()}&limit=3&lang=en&appid=${
+                    process.env.REACT_APP_API_KEY
+                }`
+            );
+            const data = response.data;
+
+            setLocations(data);
+        } catch (error) {
+            console.error({error});
+        }
     };
 
     const onLocationSelect = (location: LocationInterface) => {
@@ -43,23 +47,26 @@ const App: React.FC = () => {
             return;
         }
 
-        getForecast(location);
+        getForecast(location).then();
     };
 
-    const getForecast = (location: LocationInterface) => {
-        fetch(
-            `${BASE_URL}/data/2.5/forecast?q=${location.name}&appid=${process.env.REACT_APP_API_KEY}`
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                const forecastData = {
-                    ...data.city,
-                    list: data.list.slice(0, 16),
-                };
+    const getForecast = async (location: LocationInterface) => {
+        try {
+            const response = await axios.get(
+                `${BASE_URL}/data/2.5/forecast?q=${location.name}&appid=${
+                    process.env.REACT_APP_API_KEY
+                }`
+            );
+            const data = response.data;
+            const forecastData = {
+                ...data.city,
+                list: data.list.slice(0, 16),
+            };
 
-                setForecast(forecastData);
-            })
-            .catch((error) => console.error({error}));
+            setForecast(forecastData);
+        } catch (error) {
+            console.error({error});
+        }
     };
 
     useEffect(() => {
