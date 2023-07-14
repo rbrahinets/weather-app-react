@@ -46,6 +46,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     const formattedDateTime: string = `${weekday}, ${day} ${month}, ${hours}:${minutes}`;
     let isCelsius: boolean = true;
     const temp: number = convertTemp(today.main.temp, isCelsius);
+    const feelsLike: number = convertTemp(today.main.feels_like, isCelsius);
 
     return (
         <div className='forecast-container'>
@@ -86,6 +87,13 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                                 </span>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        Feels like:
+                        <span className='bold'>
+                            {feelsLike > 0 ? ' +' : ' '}{feelsLike}
+                            <sup> o</sup>{isCelsius ? 'C' : 'F'}
+                        </span>
                     </div>
                 </div>
                 <div className='section-bottom-right'>
