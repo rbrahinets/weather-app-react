@@ -7,6 +7,12 @@ const Forecast: React.FC<ForecastPropsInterface> = (
         forecast
     }
 ) => {
+    const convertTemp = (temp: number, isCelsius: boolean): number => {
+        return isCelsius
+            ? Math.round(temp - 273.15)
+            : Math.round((temp - 273.15) * 9 / 5 + 32);
+    }
+
     const today = forecast.list[0];
     const date: Date = new Date(today.dt * 1000);
     const weekdays: string[] = [
@@ -38,6 +44,8 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     const hours: string = String(date.getUTCHours()).padStart(2, '0');
     const minutes: string = String(date.getUTCMinutes()).padStart(2, '0');
     const formattedDateTime: string = `${weekday}, ${day} ${month}, ${hours}:${minutes}`;
+    let isCelsius: boolean = true;
+    const temp: number = convertTemp(today.main.temp, isCelsius);
 
     return (
         <div className='forecast-container'>
@@ -62,6 +70,23 @@ const Forecast: React.FC<ForecastPropsInterface> = (
             </div>
             <div className='section section-bottom'>
                 <div className='section-bottom-left'>
+                    <div className='bold temp-container'>
+                        <div className='temp-left-container temp-size temp-selected'>
+                            {temp > 0 ? ' +' : ' '}{temp}
+                        </div>
+                        <div className='temp-right-container'>
+                            <div className='temp-top-container'>
+                                <span className='temp-selected temp-type'>
+                                    <sup>o</sup>
+                                    {isCelsius ? 'C' : 'F'}
+                                </span>
+                                <span className='temp-type'>
+                                    | <sup>o</sup>
+                                    {!isCelsius ? 'C' : 'F'}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className='section-bottom-right'>
                 </div>
