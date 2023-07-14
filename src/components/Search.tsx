@@ -27,7 +27,10 @@ const Search: React.FC<SearchInterface> = (
                         onSelect={onLocationSelect}
                     />
                 </div>
-                <button className='button' onClick={onSearch}>
+                <button
+                    className='button'
+                    onClick={onSearch}
+                >
                     Add
                 </button>
             </div>
