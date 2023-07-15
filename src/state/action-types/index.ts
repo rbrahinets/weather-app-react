@@ -1,7 +1,7 @@
 export enum ActionType {
-    SET_INPUT = 'SET_INPUT',
-    SET_LOCATIONS = 'SET_LOCATIONS',
-    SET_LOCATION = 'SET_LOCATION',
-    SET_FORECAST = 'SET_FORECAST',
-    SET_IS_CELSIUS = 'SET_IS_CELSIUS',
+    SET_INPUT = 'setInput',
+    SET_LOCATIONS = 'setLocations',
+    SET_LOCATION = 'setLocation',
+    SET_FORECAST = 'setForecast',
+    SET_IS_CELSIUS = 'setIsCelsius',
 }
