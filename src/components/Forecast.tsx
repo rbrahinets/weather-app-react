@@ -71,9 +71,12 @@ const Forecast: React.FC<ForecastPropsInterface> = (
             </div>
             <div className={`section section-bottom ${temp > 0 ? 'background-color-hot' : 'background-color-cold'}`}>
                 <div className='section-bottom-left'>
-                    <div className='bold temp-container'>
+                    <div className='temp-container'>
                         <div className='temp-left-container temp-size temp-selected'>
-                            {temp > 0 ? ' +' : ' '}{temp}
+                            <span className='bold'>
+                                {temp > 0 ? ' +' : ' '}
+                            </span>
+                            {temp}
                         </div>
                         <div className='temp-right-container'>
                             <div className='temp-top-container'>

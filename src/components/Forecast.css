@@ -1,9 +1,9 @@
 .forecast-container {
-    width: 375px;
+    width: 385px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 120px;
+    margin: 120px 35px 0 35px;
 }
 
 .section {
@@ -35,6 +35,7 @@
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2);
     color: #c5c5c5;
     font-size: 10pt;
+    margin-top: -10px;
 }
 
 .section-bottom {
@@ -48,7 +49,6 @@
     width: 50%;
     color: #c5c5c5;
     font-size: 10pt;
-    margin-top: 30px;
 }
 
 .section-bottom-right {
@@ -56,6 +56,7 @@
     width: 50%;
     text-align: right;
     font-size: 10pt;
+    margin-top: 10px;
 }
 
 .bold {
@@ -89,6 +90,7 @@ img {
     flex: 1;
     display: flex;
     flex-direction: column;
+    margin-top: -5px;
 }
 
 .temp-top-container {
@@ -109,7 +111,7 @@ img {
 }
 
 .section-bottom-right-item {
-    padding: 10px;
+    padding: 5px;
 }
 
 .color-hot {
