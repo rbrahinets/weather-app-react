@@ -16,3 +16,7 @@ export interface LocationStateInterface {
 export interface ForecastStateInterface {
     forecast: ForecastInterface | null,
 }
+
+export interface IsCelsiusStateInterface {
+    isCelsius: boolean,
+}
