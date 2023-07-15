@@ -39,3 +39,13 @@ export const setForecast = (forecast: ForecastInterface | null) => {
         });
     };
 };
+
+export const setIsCelsius = (isCelsius: boolean) => {
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.SET_IS_CELSIUS,
+            payload: isCelsius,
+        });
+    };
+};
+
