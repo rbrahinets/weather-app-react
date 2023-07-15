@@ -114,6 +114,10 @@ img {
     padding: 5px;
 }
 
+.active-button {
+    cursor: pointer;
+}
+
 .color-hot {
     color: #ffa25b;
 }
