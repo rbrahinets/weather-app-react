@@ -1,6 +1,7 @@
 import React from 'react';
 import './Forecast.css';
 import {ForecastPropsInterface} from '../interfaces/ForecastPropsInterface';
+import Plot from './Plot';
 
 const Forecast: React.FC<ForecastPropsInterface> = (
     {
@@ -47,6 +48,13 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     let isCelsius: boolean = true;
     const temp: number = convertTemp(today.main.temp, isCelsius);
     const feelsLike: number = convertTemp(today.main.feels_like, isCelsius);
+    const plotHours: number[] = [];
+    const plotTemps: number[] = [];
+
+    for (const day of forecast.list) {
+        plotHours.push(new Date(day.dt * 1000).getHours());
+        plotTemps.push(convertTemp(day.main.temp, isCelsius));
+    }
 
     return (
         <div className='forecast-container'>
@@ -68,6 +76,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                 </div>
             </div>
             <div className={`section section-middle ${temp > 0 ? 'background-color-hot' : 'background-color-cold'}`}>
+                <Plot hours={plotHours} temperatures={plotTemps}/>
             </div>
             <div className={`section section-bottom ${temp > 0 ? 'background-color-hot' : 'background-color-cold'}`}>
                 <div className='section-bottom-left'>
