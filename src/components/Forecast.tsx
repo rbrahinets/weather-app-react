@@ -1,5 +1,8 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
+import {useDispatch, useSelector} from 'react-redux';
 import './Forecast.css';
+import {actionCreators, State} from '../state';
 import {ForecastPropsInterface} from '../interfaces/ForecastPropsInterface';
 import Plot from './Plot';
 
@@ -8,6 +11,15 @@ const Forecast: React.FC<ForecastPropsInterface> = (
         forecast
     }
 ) => {
+    const dispatch = useDispatch();
+    const {
+        setIsCelsius
+    } = bindActionCreators(
+        actionCreators,
+        dispatch
+    );
+    const {isCelsius} = useSelector((state: State) => state.isCelsius);
+
     const convertTemp = (temp: number, isCelsius: boolean): number => {
         return isCelsius
             ? Math.round(temp - 273.15)
@@ -45,8 +57,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     const hours: string = String(date.getUTCHours()).padStart(2, '0');
     const minutes: string = String(date.getUTCMinutes()).padStart(2, '0');
     const formattedDateTime: string = `${weekday}, ${day} ${month}, ${hours}:${minutes}`;
-    let isCelsius: boolean = true;
-    const temp: number = convertTemp(today.main.temp, isCelsius);
+    let temp: number = convertTemp(today.main.temp, isCelsius);
     const feelsLike: number = convertTemp(today.main.feels_like, isCelsius);
     const plotHours: number[] = [];
     const plotTemps: number[] = [];
@@ -55,6 +66,10 @@ const Forecast: React.FC<ForecastPropsInterface> = (
         plotHours.push(new Date(day.dt * 1000).getHours());
         plotTemps.push(convertTemp(day.main.temp, isCelsius));
     }
+
+    const changeTypeOfTemp = (): void => {
+        setIsCelsius(!isCelsius);
+    };
 
     return (
         <div className='forecast-container'>
@@ -89,11 +104,14 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                         </div>
                         <div className='temp-right-container'>
                             <div className='temp-top-container'>
-                                <span className='temp-selected temp-type'>
+                                <span className='temp-type temp-selected'>
                                     <sup>o</sup>
                                     {isCelsius ? 'C' : 'F'}
                                 </span>
-                                <span className='temp-type'>
+                                <span
+                                    className='temp-type active-button'
+                                    onClick={changeTypeOfTemp}
+                                >
                                     | <sup>o</sup>
                                     {!isCelsius ? 'C' : 'F'}
                                 </span>
