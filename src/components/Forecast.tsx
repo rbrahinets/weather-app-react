@@ -15,7 +15,10 @@ const Forecast: React.FC<ForecastPropsInterface> = (
         setTypeTemp,
         deleteTypeTemp,
     } = useSettings();
-    const {deleteForecastFromArray} = useForecast();
+    const {
+        updateTypeTempOfForecast,
+        deleteForecastFromArray,
+    } = useForecast();
 
     const convertTemp = (temp: number, isCelsius: boolean): number => {
         return isCelsius
@@ -68,6 +71,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     const changeTypeOfTemp = (): void => {
         isCelsius = !isCelsius;
         setTypeTemp(forecast.id.toString(), isCelsius ? 'C' : 'F');
+        updateTypeTempOfForecast(forecast);
     };
 
     const deleteCurrentForecast = () => {
