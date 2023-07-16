@@ -10,8 +10,6 @@ export interface ForecastInterface {
                 humidity: number;
                 pressure: number;
                 temp: number;
-                temp_max: number;
-                temp_min: number;
             };
             weather: [
                 {
@@ -22,16 +20,7 @@ export interface ForecastInterface {
             ];
             wind: {
                 speed: number;
-                gust: number;
-                deg: number;
             };
-            clouds: {
-                all: number;
-            };
-            pop: number;
-            visibility: number;
         }
     ];
-    sunrise: number;
-    sunset: number;
 }
