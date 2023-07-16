@@ -1,9 +1,9 @@
 .forecast-container {
-    width: 385px;
+    width: 375px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 120px 35px 0 35px;
+    margin: 40px 35px 0 35px;
 }
 
 .section {
@@ -42,6 +42,7 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2);
+    padding-top: 5px;
 }
 
 .section-bottom-left {
@@ -116,6 +117,7 @@ img {
 
 .active-button {
     cursor: pointer;
+    color: #808080;
 }
 
 .color-hot {
