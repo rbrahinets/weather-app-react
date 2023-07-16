@@ -29,13 +29,13 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     const today = forecast.list[0];
     const date: Date = new Date(today.dt * 1000);
     const weekdays: string[] = [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
+        'Sun',
+        'Mon',
+        'Tues',
+        'Wed',
+        'Thurs',
+        'Fri',
+        'Sat'
     ];
     const months: string[] = [
         'January',
