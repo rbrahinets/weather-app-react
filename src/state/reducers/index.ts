@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import inputReducer from './inputReducer';
 import locationReducer from './locationReducer';
 import locationsReducer from './locationsReducer';
-import forecastReducer from './forecastReducer';
+import forecastReducer from './forecastsReducer';
 import isCelsiusReducer from './isCelsiusReducer';
 
 const reducers = combineReducers({
