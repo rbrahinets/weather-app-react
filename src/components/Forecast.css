@@ -74,8 +74,13 @@
     width: 15%;
 }
 
-img {
+.img-weather {
     width: 50px;
+}
+
+.img-close {
+    width: 10px;
+    cursor: pointer;
 }
 
 .temp-container {
