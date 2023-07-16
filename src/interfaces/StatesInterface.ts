@@ -13,8 +13,8 @@ export interface LocationStateInterface {
     location: LocationInterface | null,
 }
 
-export interface ForecastStateInterface {
-    forecast: ForecastInterface | null,
+export interface ForecastsStateInterface {
+    forecasts: ForecastInterface[],
 }
 
 export interface IsCelsiusStateInterface {

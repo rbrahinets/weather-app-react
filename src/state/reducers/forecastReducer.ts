@@ -1,20 +1,23 @@
 import {Action} from '../actions';
 import {ActionType} from '../action-types';
-import {ForecastStateInterface} from '../../interfaces/StatesInterface';
+import {ForecastsStateInterface} from '../../interfaces/StatesInterface';
 
-const initialState: ForecastStateInterface = {
-    forecast: null,
+const initialState: ForecastsStateInterface = {
+    forecasts: [],
 };
 
 const reducer = (
-    state: ForecastStateInterface = initialState,
+    state: ForecastsStateInterface = initialState,
     action: Action
-): ForecastStateInterface => {
+): ForecastsStateInterface => {
     switch (action.type) {
         case ActionType.SET_FORECAST:
+            if (action.payload) {
+                state.forecasts.push(action.payload);
+            }
+
             return {
                 ...state,
-                forecast: action.payload,
             };
         default:
             return state;

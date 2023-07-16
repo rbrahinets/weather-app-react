@@ -10,7 +10,7 @@ import Forecast from './components/Forecast';
 const App: React.FC = () => {
     const {input} = useSelector((state: State) => state.input);
     const {locations} = useSelector((state: State) => state.locations);
-    const {forecast} = useSelector((state: State) => state.forecast);
+    const {forecasts} = useSelector((state: State) => state.forecasts);
     const {
         onInputChange,
         onLocationSelect,

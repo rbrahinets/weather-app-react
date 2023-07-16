@@ -9,7 +9,7 @@ const reducers = combineReducers({
     input: inputReducer,
     locations: locationsReducer,
     location: locationReducer,
-    forecast: forecastReducer,
+    forecasts: forecastReducer,
     isCelsius: isCelsiusReducer,
 });
 
