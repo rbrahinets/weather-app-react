@@ -2,6 +2,7 @@ export interface ForecastInterface {
     id: number;
     name: string;
     country: string;
+    type_temp: string;
     list: [
         {
             dt: number;
