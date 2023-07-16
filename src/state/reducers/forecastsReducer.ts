@@ -19,6 +19,16 @@ const reducer = (
             return {
                 ...state,
             };
+        case ActionType.UPDATE_FORECAST:
+            if (action.payload) {
+                state.forecasts = state.forecasts.map((forecast) =>
+                    forecast.id === action.payload?.id ? {...forecast, type_temp: action.payload.type_temp} : forecast
+                );
+            }
+
+            return {
+                ...state,
+            };
         case ActionType.DELETE_FORECAST:
             if (action.payload) {
                 state.forecasts = state.forecasts.filter((forecast) => forecast.id !== action.payload?.id);
