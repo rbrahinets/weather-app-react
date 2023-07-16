@@ -66,7 +66,8 @@ const useForecast = () => {
             const data = response.data;
             const forecastData = {
                 ...data.city,
-                list: data.list.slice(0, 16),
+                id: forecasts.length + 1,
+                list: data.list,
             };
 
             setForecast(forecastData);

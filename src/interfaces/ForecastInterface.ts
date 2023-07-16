@@ -1,4 +1,5 @@
 export interface ForecastInterface {
+    id: number;
     name: string;
     country: string;
     list: [
