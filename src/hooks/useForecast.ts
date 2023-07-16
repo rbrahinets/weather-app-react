@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import {actionCreators, State} from '../state';
 import {LocationInterface} from '../interfaces/LocationInterface';
+import {ForecastInterface} from '../interfaces/ForecastInterface';
 import useSettings from './useSettings';
 
 const BASE_URL: string = 'https://api.openweathermap.org';
@@ -14,7 +15,8 @@ const useForecast = () => {
         setInput,
         setLocations,
         setLocation,
-        setForecast
+        setForecast,
+        deleteForecast,
     } = bindActionCreators(
         actionCreators,
         dispatch
@@ -80,6 +82,10 @@ const useForecast = () => {
         }
     };
 
+    const deleteForecastFromArray = (forecast: ForecastInterface) => {
+        deleteForecast(forecast);
+    }
+
     useEffect(() => {
         if (location) {
             setInput(location.name);
@@ -90,7 +96,8 @@ const useForecast = () => {
     return {
         onInputChange,
         onLocationSelect,
-        onSearch
+        onSearch,
+        deleteForecastFromArray,
     }
 }
 
