@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import {actionCreators, State} from '../state';
 import {LocationInterface} from '../interfaces/LocationInterface';
+import useSettings from './useSettings';
 
 const BASE_URL: string = 'https://api.openweathermap.org';
 
@@ -19,6 +20,8 @@ const useForecast = () => {
         dispatch
     );
     const {location} = useSelector((state: State) => state.location);
+    const {forecasts} = useSelector((state: State) => state.forecasts);
+    const {setTypeTemp} = useSettings();
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value: string = event.target.value.trim()
@@ -70,6 +73,7 @@ const useForecast = () => {
                 list: data.list,
             };
 
+            setTypeTemp(forecastData.id.toString(), 'C');
             setForecast(forecastData);
         } catch (error) {
             console.error({error});
