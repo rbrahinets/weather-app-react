@@ -77,12 +77,20 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                 <div className='section-top-right'>
                     <div className='section-left'>
                         <img
-                            alt={`weather-icon-${today.weather[0].description}`}
                             src={`http://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png`}
+                            alt={`weather-icon-${today.weather[0].description}`}
+                            className='img-weather'
                         />
                     </div>
-                    <div className='section-right'>
+                    <div className='section-left'>
                         {today.weather[0].main}
+                    </div>
+                    <div className='section-right'>
+                        <img
+                            src={'close.png'}
+                            alt='close'
+                            className='img-close'
+                        />
                     </div>
                 </div>
             </div>
