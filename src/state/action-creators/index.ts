@@ -40,6 +40,15 @@ export const setForecast = (forecast: ForecastInterface | null) => {
     };
 };
 
+export const deleteForecast = (forecast: ForecastInterface | null) => {
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.DELETE_FORECAST,
+            payload: forecast,
+        });
+    };
+};
+
 export const setIsCelsius = (isCelsius: boolean) => {
     return (dispatch: Dispatch<Action>) => {
         dispatch({
