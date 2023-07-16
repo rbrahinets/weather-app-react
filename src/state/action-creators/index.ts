@@ -40,6 +40,15 @@ export const setForecast = (forecast: ForecastInterface | null) => {
     };
 };
 
+export const updateForecast = (forecast: ForecastInterface | null) => {
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.UPDATE_FORECAST,
+            payload: forecast,
+        });
+    };
+};
+
 export const deleteForecast = (forecast: ForecastInterface | null) => {
     return (dispatch: Dispatch<Action>) => {
         dispatch({
