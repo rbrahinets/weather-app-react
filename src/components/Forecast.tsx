@@ -1,24 +1,18 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
-import {useDispatch, useSelector} from 'react-redux';
 import './Forecast.css';
-import {actionCreators, State} from '../state';
 import {ForecastPropsInterface} from '../interfaces/ForecastPropsInterface';
 import Plot from './Plot';
+import useSettings from '../hooks/useSettings';
 
 const Forecast: React.FC<ForecastPropsInterface> = (
     {
         forecast
     }
 ) => {
-    const dispatch = useDispatch();
     const {
-        setIsCelsius
-    } = bindActionCreators(
-        actionCreators,
-        dispatch
-    );
-    const {isCelsius} = useSelector((state: State) => state.isCelsius);
+        getTypeTemp,
+        setTypeTemp,
+    } = useSettings();
 
     const convertTemp = (temp: number, isCelsius: boolean): number => {
         return isCelsius
@@ -57,6 +51,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     const hours: string = String(date.getUTCHours()).padStart(2, '0');
     const minutes: string = String(date.getUTCMinutes()).padStart(2, '0');
     const formattedDateTime: string = `${weekday}, ${day} ${month}, ${hours}:${minutes}`;
+    let isCelsius: boolean = getTypeTemp(forecast.id.toString()) === 'C';
     let temp: number = convertTemp(today.main.temp, isCelsius);
     const feelsLike: number = convertTemp(today.main.feels_like, isCelsius);
     const plotDataTimes: number[] = [];
@@ -68,7 +63,8 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     }
 
     const changeTypeOfTemp = (): void => {
-        setIsCelsius(!isCelsius);
+        isCelsius = !isCelsius;
+        setTypeTemp(forecast.id.toString(), isCelsius ? 'C' : 'F');
     };
 
     return (
