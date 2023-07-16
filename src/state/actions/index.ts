@@ -22,6 +22,11 @@ interface SetForecastAction {
     payload: ForecastInterface | null;
 }
 
+interface DeleteForecastAction {
+    type: ActionType.DELETE_FORECAST;
+    payload: ForecastInterface | null;
+}
+
 interface SetIsCelsiusAction {
     type: ActionType.SET_IS_CELSIUS;
     payload: boolean;
@@ -31,4 +36,5 @@ export type Action = SetInputAction
     | SetLocationsAction
     | SetLocationAction
     | SetForecastAction
+    | DeleteForecastAction
     | SetIsCelsiusAction;
