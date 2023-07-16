@@ -1,6 +1,9 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
+import {useDispatch} from 'react-redux';
 import './Forecast.css';
 import {ForecastPropsInterface} from '../interfaces/ForecastPropsInterface';
+import {actionCreators} from '../state';
 import Plot from './Plot';
 import useSettings from '../hooks/useSettings';
 
@@ -12,7 +15,10 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     const {
         getTypeTemp,
         setTypeTemp,
+        deleteTypeTemp,
     } = useSettings();
+    const dispatch = useDispatch();
+    const {deleteForecast,} = bindActionCreators(actionCreators, dispatch);
 
     const convertTemp = (temp: number, isCelsius: boolean): number => {
         return isCelsius
@@ -67,6 +73,11 @@ const Forecast: React.FC<ForecastPropsInterface> = (
         setTypeTemp(forecast.id.toString(), isCelsius ? 'C' : 'F');
     };
 
+    const deleteCurrentForecast = () => {
+        deleteForecast(forecast);
+        deleteTypeTemp(forecast.id.toString());
+    }
+
     return (
         <div className='forecast-container'>
             <div className={`section section-top ${temp > 0 ? 'background-color-hot' : 'background-color-cold'}`}>
@@ -90,6 +101,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                             src={'close.png'}
                             alt='close'
                             className='img-close'
+                            onClick={deleteCurrentForecast}
                         />
                     </div>
                 </div>
