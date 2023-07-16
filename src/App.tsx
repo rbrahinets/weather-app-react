@@ -6,6 +6,7 @@ import useForecast from './hooks/useForecast';
 import Header from './components/Header';
 import Search from './components/Search';
 import Forecast from './components/Forecast';
+import {ForecastInterface} from './interfaces/ForecastInterface';
 
 const App: React.FC = () => {
     const {input} = useSelector((state: State) => state.input);
@@ -27,11 +28,12 @@ const App: React.FC = () => {
                 onLocationSelect={onLocationSelect}
                 onSearch={onSearch}
             />
-            {forecast && (
-                <div className='center'>
-                    <Forecast forecast={forecast}/>
-                </div>
-            )}
+            <div className='forecasts-container'>
+                {forecasts.map((forecast: ForecastInterface, index: number) => (
+                    <Forecast key={index} forecast={forecast}/>
+                ))}
+            </div>
+
         </>
     );
 }
