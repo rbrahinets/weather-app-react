@@ -19,6 +19,14 @@ const reducer = (
             return {
                 ...state,
             };
+        case ActionType.DELETE_FORECAST:
+            if (action.payload) {
+                state.forecasts.filter((forecast) => forecast.id !== action.payload?.id);
+            }
+
+            return {
+                ...state,
+            };
         default:
             return state;
     }
