@@ -1,4 +1,4 @@
 export interface PlotPropsInterface {
-    hours: number[],
+    dateTimes: number[],
     temperatures: number[]
 }

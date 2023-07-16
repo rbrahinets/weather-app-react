@@ -3,9 +3,16 @@ import {Chart, ChartConfiguration, registerables} from 'chart.js/auto';
 import './Plot.css';
 import {PlotPropsInterface} from '../interfaces/PlotPropsInterface';
 
-const Plot: React.FC<PlotPropsInterface> = ({hours, temperatures}) => {
+const Plot: React.FC<PlotPropsInterface> = ({dateTimes, temperatures}) => {
     const chartRef = useRef<HTMLCanvasElement>(null);
     const chartInstanceRef = useRef<Chart>();
+
+    const formatDate = (dt: number): string => {
+        const day: number = new Date(dt * 1000).getDate();
+        const month: number = new Date(dt * 1000).getMonth();
+        const zero: string = month < 10 ? '0' : '';
+        return `${day}.${zero}${month}`;
+    }
 
     useEffect(() => {
         if (chartRef.current) {
@@ -21,7 +28,7 @@ const Plot: React.FC<PlotPropsInterface> = ({hours, temperatures}) => {
                 const chartConfig: ChartConfiguration = {
                     type: 'line',
                     data: {
-                        labels: hours.map((hour: number) => hour.toString()),
+                        labels: dateTimes.map((dt: number) => formatDate(dt)),
                         datasets: [
                             {
                                 label: '',
@@ -46,6 +53,8 @@ const Plot: React.FC<PlotPropsInterface> = ({hours, temperatures}) => {
                                     font: {
                                         size: 10,
                                     },
+                                    maxRotation: 0,
+                                    minRotation: 0,
                                 },
                             },
                             y: {
@@ -75,7 +84,7 @@ const Plot: React.FC<PlotPropsInterface> = ({hours, temperatures}) => {
                 chartInstanceRef.current = new Chart(ctx, chartConfig);
             }
         }
-    }, [hours, temperatures]);
+    }, [dateTimes, temperatures]);
 
     return (
         <div className='plot-container'>
