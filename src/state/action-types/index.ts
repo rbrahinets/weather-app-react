@@ -3,5 +3,6 @@ export enum ActionType {
     SET_LOCATIONS = 'setLocations',
     SET_LOCATION = 'setLocation',
     SET_FORECAST = 'setForecast',
+    DELETE_FORECAST = 'deleteForecast',
     SET_IS_CELSIUS = 'setIsCelsius',
 }
