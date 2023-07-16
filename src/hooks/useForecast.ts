@@ -16,6 +16,7 @@ const useForecast = () => {
         setLocations,
         setLocation,
         setForecast,
+        updateForecast,
         deleteForecast,
     } = bindActionCreators(
         actionCreators,
@@ -71,7 +72,7 @@ const useForecast = () => {
             const data = response.data;
             const forecastData = {
                 ...data.city,
-                id: forecasts.length + 1,
+                id: forecasts[forecasts.length - 1] ? forecasts[forecasts.length - 1].id + 1 : 0,
                 list: data.list,
             };
 
@@ -81,6 +82,10 @@ const useForecast = () => {
             console.error({error});
         }
     };
+
+    const updateTypeTempOfForecast = (forecast: ForecastInterface) => {
+        updateForecast(forecast);
+    }
 
     const deleteForecastFromArray = (forecast: ForecastInterface) => {
         deleteForecast(forecast);
@@ -97,6 +102,7 @@ const useForecast = () => {
         onInputChange,
         onLocationSelect,
         onSearch,
+        updateTypeTempOfForecast,
         deleteForecastFromArray,
     }
 }
