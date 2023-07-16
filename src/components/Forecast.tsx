@@ -1,10 +1,8 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
-import {useDispatch} from 'react-redux';
 import './Forecast.css';
 import {ForecastPropsInterface} from '../interfaces/ForecastPropsInterface';
-import {actionCreators} from '../state';
 import Plot from './Plot';
+import useForecast from '../hooks/useForecast';
 import useSettings from '../hooks/useSettings';
 
 const Forecast: React.FC<ForecastPropsInterface> = (
@@ -17,8 +15,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
         setTypeTemp,
         deleteTypeTemp,
     } = useSettings();
-    const dispatch = useDispatch();
-    const {deleteForecast,} = bindActionCreators(actionCreators, dispatch);
+    const {deleteForecastFromArray} = useForecast();
 
     const convertTemp = (temp: number, isCelsius: boolean): number => {
         return isCelsius
@@ -74,7 +71,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     };
 
     const deleteCurrentForecast = () => {
-        deleteForecast(forecast);
+        deleteForecastFromArray(forecast);
         deleteTypeTemp(forecast.id.toString());
     }
 
