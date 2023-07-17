@@ -1,5 +1,6 @@
 import React from 'react';
 import './Search.css';
+import {useTranslation} from 'react-i18next';
 import {SearchPropsInterface} from '../interfaces/SearchPropsInterface';
 import Suggestions from './Suggestions';
 
@@ -12,6 +13,8 @@ const Search: React.FC<SearchPropsInterface> = (
         onSearch
     }
 ) => {
+    const {t} = useTranslation();
+
     return (
         <div className='center'>
             <div className='search-container'>
@@ -31,7 +34,7 @@ const Search: React.FC<SearchPropsInterface> = (
                     className='button'
                     onClick={onSearch}
                 >
-                    Add
+                    {t('add')}
                 </button>
             </div>
         </div>

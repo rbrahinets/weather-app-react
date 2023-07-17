@@ -25,6 +25,7 @@ const useForecast = () => {
     const {location} = useSelector((state: State) => state.location);
     const {forecasts} = useSelector((state: State) => state.forecasts);
     const {setTypeTemp} = useSettings();
+    const language: any = localStorage.getItem('i18nextLng');
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value: string = event.target.value.trim()
@@ -38,7 +39,7 @@ const useForecast = () => {
     const getLocations = async (city: string) => {
         try {
             const response = await axios.get(
-                `${BASE_URL}/geo/1.0/direct?q=${city.trim()}&limit=3&lang=en&appid=${
+                `${BASE_URL}/geo/1.0/direct?q=${city.trim()}&limit=3&lang=${language}&appid=${
                     process.env.REACT_APP_API_KEY
                 }`
             );
@@ -91,9 +92,15 @@ const useForecast = () => {
         deleteForecast(forecast);
     }
 
+    const getCity = (location: LocationInterface): string => {
+        return location.local_names && location.local_names[language]
+            ? location.local_names[language]
+            : location.name;
+    }
+
     useEffect(() => {
         if (location) {
-            setInput(location.name);
+            setInput(getCity(location));
             setLocations([]);
         }
     }, [location]);

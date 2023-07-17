@@ -1,5 +1,6 @@
 import React from 'react';
 import './Forecast.css';
+import {useTranslation} from 'react-i18next';
 import {ForecastPropsInterface} from '../interfaces/ForecastPropsInterface';
 import Plot from './Plot';
 import useForecast from '../hooks/useForecast';
@@ -10,6 +11,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
         forecast
     }
 ) => {
+    const {t} = useTranslation();
     const {
         getTypeTemp,
         setTypeTemp,
@@ -56,7 +58,8 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     const month: string = months[date.getUTCMonth()];
     const hours: string = String(date.getUTCHours()).padStart(2, '0');
     const minutes: string = String(date.getUTCMinutes()).padStart(2, '0');
-    const formattedDateTime: string = `${weekday}, ${day} ${month}, ${hours}:${minutes}`;
+    const formattedDateTime: string = `${t('weekday', {context: weekday.toLowerCase()})},
+    ${day} ${t('month', {context: month.toLowerCase()})}, ${hours}:${minutes}`;
     let isCelsius: boolean = getTypeTemp(forecast.id.toString()) === 'C';
     let temp: number = convertTemp(today.main.temp, isCelsius);
     const feelsLike: number = convertTemp(today.main.feels_like, isCelsius);
@@ -136,7 +139,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                         </div>
                     </div>
                     <div>
-                        Feels like:
+                        {t('feels_like')}:
                         <span className='bold'>
                             {feelsLike > 0 ? ' +' : ' '}{feelsLike}
                             <sup> o</sup>{isCelsius ? 'C' : 'F'}
@@ -145,24 +148,26 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                 </div>
                 <div className='section-bottom-right'>
                     <div className='section-bottom-right-item'>
-                        Wind:
+                        {t('wind')}:
                         <span
                             className={`bold ${temp > 0 ? 'color-hot' : 'color-cold'}`}>
-                            {` ${Math.round(today.wind.speed)}`} m/s
+                            {` ${Math.round(today.wind.speed)}`} {t('speed')}
                         </span>
                     </div>
                     <div className='section-bottom-right-item'>
-                        Humidity:
+                        {t('humidity')}:
                         <span
                             className={`bold ${temp > 0 ? 'color-hot' : 'color-cold'}`}>
                         {` ${today.main.humidity}`}%
                         </span>
                     </div>
                     <div className='section-bottom-right-item'>
-                        Pressure:
+                        <span>{t('pressure')}</span>:
                         <span
-                            className={`bold ${temp > 0 ? 'color-hot' : 'color-cold'}`}>
-                            {` ${today.main.pressure}`}Pa
+                            className={`bold ${temp > 0 ? 'color-hot' : 'color-cold'}`}
+                        >
+                            {` ${today.main.pressure}`}
+                            <span>{t('pa')}</span>
                         </span>
                     </div>
                 </div>

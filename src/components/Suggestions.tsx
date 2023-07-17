@@ -9,6 +9,8 @@ const Suggestions: React.FC<SuggestionsPropsInterface> = (
         onSelect
     }
 ) => {
+    const language: any = localStorage.getItem('i18nextLng');
+
     return (
         <ul className='list'>
             {locations.map((
@@ -20,7 +22,10 @@ const Suggestions: React.FC<SuggestionsPropsInterface> = (
                         className='item'
                         onClick={() => onSelect(location)}
                     >
-                        {location.name}, {location.country}
+                        {location.local_names && location.local_names[language]
+                            ? location.local_names[language]
+                            : location.name},
+                        {location.country}
                     </button>
                 </li>
             ))}
