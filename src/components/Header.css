@@ -1,4 +1,44 @@
 .header {
+    display: flex;
+    justify-content: right;
     background-color: #ffffff;;
     padding: 20px;
 }
+
+.language-container {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.img-lang {
+    width: 13px;
+}
+
+.selected-language {
+    cursor: pointer;
+}
+
+.lang-list {
+    position: absolute;
+    width: 65px;
+    background-color: #ffffff;
+    padding: 0;
+    margin-top: 7px;
+    list-style: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.lang-item {
+    text-align: left;
+    font-size: 14px;
+    width: 100%;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.lang-item:hover {
+    background-color: #f2f2f2;
+}
+
