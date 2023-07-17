@@ -1,6 +1,7 @@
 const useSettings = () => {
-    const getTypeTemp = (key: string) => {
-        return localStorage.getItem(`forecast_type_temp_${key}`);
+    const getTypesTemps = (): any[] => {
+        const types: any = localStorage.getItem('types_temps');
+        return types ? JSON.parse(types) : [];
     }
 
     const setTypeTemp = (key: string, value: string): void => {
@@ -12,6 +13,7 @@ const useSettings = () => {
     }
 
     return {
+        getTypesTemps,
         getTypeTemp,
         setTypeTemp,
         deleteTypeTemp,
