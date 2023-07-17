@@ -27,10 +27,16 @@ const useSettings = () => {
         localStorage.setItem('types_temps', JSON.stringify(types));
     }
 
+    const updateTypeTemp = (id: string, type: string): void => {
+        deleteTypeTemp(id);
+        setTypeTemp(id, type);
+    }
+
     return {
         getTypesTemps,
         getTypeTemp,
         setTypeTemp,
+        updateTypeTemp,
         deleteTypeTemp,
     }
 }
