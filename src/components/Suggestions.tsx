@@ -24,8 +24,7 @@ const Suggestions: React.FC<SuggestionsPropsInterface> = (
                     >
                         {location.local_names && location.local_names[language]
                             ? location.local_names[language]
-                            : location.name},
-                        {location.country}
+                            : location.name}, {location.country}
                     </button>
                 </li>
             ))}
