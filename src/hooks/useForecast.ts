@@ -60,13 +60,13 @@ const useForecast = () => {
             return;
         }
 
-        getForecast(location).then();
+        getForecast(location.name).then();
     };
 
-    const getForecast = async (location: LocationInterface) => {
+    const getForecast = async (city: string) => {
         try {
             const response = await axios.get(
-                `${BASE_URL}/data/2.5/forecast?q=${location.name}&appid=${
+                `${BASE_URL}/data/2.5/forecast?q=${city}&appid=${
                     process.env.REACT_APP_API_KEY
                 }`
             );
@@ -111,6 +111,7 @@ const useForecast = () => {
         onSearch,
         updateTypeTempOfForecast,
         deleteForecastFromArray,
+        getForecast,
     }
 }
 
