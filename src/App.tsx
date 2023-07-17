@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import './App.css';
 import {State} from './state';
 import useForecast from './hooks/useForecast';
+import UserLocation from './components/UserLocation';
 import Header from './components/Header';
 import Search from './components/Search';
 import Forecast from './components/Forecast';
@@ -15,11 +16,21 @@ const App: React.FC = () => {
     const {
         onInputChange,
         onLocationSelect,
-        onSearch
+        onSearch,
+        getForecast
     } = useForecast();
+    let currentLocation: any = localStorage.getItem('city');
+
+    useEffect(() => {
+        if (currentLocation) {
+            getForecast(currentLocation).then();
+            currentLocation = null;
+        }
+    }, [currentLocation]);
 
     return (
         <>
+            <UserLocation/>
             <Header/>
             <Search
                 city={input}
