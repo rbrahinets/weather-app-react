@@ -12,11 +12,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
     }
 ) => {
     const {t} = useTranslation();
-    const {
-        getTypeTemp,
-        setTypeTemp,
-        deleteTypeTemp,
-    } = useSettings();
+    const {getTypeTemp} = useSettings();
     const {
         updateTypeTempOfForecast,
         deleteForecastFromArray,
@@ -73,13 +69,11 @@ const Forecast: React.FC<ForecastPropsInterface> = (
 
     const changeTypeOfTemp = (): void => {
         isCelsius = !isCelsius;
-        setTypeTemp(forecast.id.toString(), isCelsius ? 'C' : 'F');
-        updateTypeTempOfForecast(forecast);
+        updateTypeTempOfForecast(forecast, isCelsius ? 'C' : 'F');
     };
 
     const deleteCurrentForecast = () => {
         deleteForecastFromArray(forecast);
-        deleteTypeTemp(forecast.id.toString());
     }
 
     return (
