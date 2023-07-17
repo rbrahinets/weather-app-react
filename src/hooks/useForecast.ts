@@ -90,6 +90,8 @@ const useForecast = () => {
 
     const deleteForecastFromArray = (forecast: ForecastInterface) => {
         deleteForecast(forecast);
+        deleteTypeTemp(forecast.id.toString());
+        deleteCity(forecast.name);
     }
 
     const getCity = (location: LocationInterface): string => {
