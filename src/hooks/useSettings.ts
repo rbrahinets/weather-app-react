@@ -32,6 +32,12 @@ const useSettings = () => {
         setTypeTemp(id, type);
     }
 
+    const deleteTypeTemp = (id: string): void => {
+        let types: any[] = getTypesTemps();
+        types = types.filter((t) => t.id !== id);
+        localStorage.setItem('types_temps', JSON.stringify(types));
+    }
+
     return {
         getTypesTemps,
         getTypeTemp,
