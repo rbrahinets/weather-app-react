@@ -102,7 +102,7 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                     </div>
                     <div className='section-right'>
                         <img
-                            src={'close.png'}
+                            src={`${process.env.PUBLIC_URL}/close.png`}
                             alt='close'
                             className='img-close'
                             onClick={deleteCurrentForecast}
