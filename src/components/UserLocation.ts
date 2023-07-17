@@ -14,23 +14,23 @@ const UserLocation: React.FC = () => {
                         await geocoder.geocode({location: latLng}, (results, status) => {
                             if (status === google.maps.GeocoderStatus.OK) {
                                 if (results && results[0]) {
-                                    const city = results[0].address_components.find(
+                                    const city: any = results[0].address_components.find(
                                         (component: any) =>
                                             component.types.includes('locality') ||
                                             component.types.includes('postal_town')
                                     )?.long_name;
 
-                                    city ? localStorage.setItem('city', city) : localStorage.setItem('city', '');
+                                    city ? localStorage.setItem('current_city', city) : localStorage.setItem('current_city', '');
                                 }
                             }
                         });
                     },
                     () => {
-                        localStorage.setItem('city', '');
+                        localStorage.setItem('current_city', '');
                     }
                 );
             } else {
-                localStorage.setItem('city', '');
+                localStorage.setItem('current_city', '');
             }
         };
 
