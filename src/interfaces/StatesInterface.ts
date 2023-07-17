@@ -17,6 +17,6 @@ export interface ForecastsStateInterface {
     forecasts: ForecastInterface[],
 }
 
-export interface IsCelsiusStateInterface {
-    isCelsius: boolean,
+export interface IsVisibleLanguagesStateInterface {
+    isVisibleLanguages: boolean,
 }

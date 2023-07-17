@@ -58,11 +58,11 @@ export const deleteForecast = (forecast: ForecastInterface | null) => {
     };
 };
 
-export const setIsCelsius = (isCelsius: boolean) => {
+export const setIsVisibleLanguages = (isVisibleLanguages: boolean) => {
     return (dispatch: Dispatch<Action>) => {
         dispatch({
-            type: ActionType.SET_IS_CELSIUS,
-            payload: isCelsius,
+            type: ActionType.SET_IS_VISIBLE_LANGUAGES,
+            payload: isVisibleLanguages,
         });
     };
 };

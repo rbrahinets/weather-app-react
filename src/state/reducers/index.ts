@@ -3,14 +3,14 @@ import inputReducer from './inputReducer';
 import locationReducer from './locationReducer';
 import locationsReducer from './locationsReducer';
 import forecastReducer from './forecastsReducer';
-import isCelsiusReducer from './isCelsiusReducer';
+import isVisibleLanguagesReducer from './isVisibleLanguagesReducer';
 
 const reducers = combineReducers({
     input: inputReducer,
     locations: locationsReducer,
     location: locationReducer,
     forecasts: forecastReducer,
-    isCelsius: isCelsiusReducer,
+    isVisibleLanguages: isVisibleLanguagesReducer,
 });
 
 export default reducers;

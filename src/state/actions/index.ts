@@ -32,8 +32,8 @@ interface UpdateForecastAction {
     payload: ForecastInterface | null;
 }
 
-interface SetIsCelsiusAction {
-    type: ActionType.SET_IS_CELSIUS;
+interface SetIsVisibleLanguagesAction {
+    type: ActionType.SET_IS_VISIBLE_LANGUAGES;
     payload: boolean;
 }
 
@@ -43,4 +43,4 @@ export type Action = SetInputAction
     | SetForecastAction
     | UpdateForecastAction
     | DeleteForecastAction
-    | SetIsCelsiusAction;
+    | SetIsVisibleLanguagesAction;

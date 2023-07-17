@@ -5,5 +5,5 @@ export enum ActionType {
     SET_FORECAST = 'setForecast',
     UPDATE_FORECAST = 'updateForecast',
     DELETE_FORECAST = 'deleteForecast',
-    SET_IS_CELSIUS = 'setIsCelsius',
+    SET_IS_VISIBLE_LANGUAGES = 'setIsVisibleLanguages',
 }
