@@ -84,8 +84,9 @@ const useForecast = () => {
         }
     };
 
-    const updateTypeTempOfForecast = (forecast: ForecastInterface) => {
+    const updateTypeTempOfForecast = (forecast: ForecastInterface, type: string) => {
         updateForecast(forecast);
+        updateTypeTemp(forecast.id.toString(), type);
     }
 
     const deleteForecastFromArray = (forecast: ForecastInterface) => {
