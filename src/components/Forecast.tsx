@@ -132,7 +132,8 @@ const Forecast: React.FC<ForecastPropsInterface> = (
                                     className='temp-type active-button'
                                     onClick={changeTypeOfTemp}
                                 >
-                                    | <sup>o</sup>
+                                    &nbsp;|&nbsp;
+                                    <sup>o</sup>
                                     {!isCelsius ? 'C' : 'F'}
                                 </span>
                             </div>
