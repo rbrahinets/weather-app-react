@@ -1,4 +1,26 @@
 const useSettings = () => {
+    const getCities = (): string[] => {
+        const cities: any = localStorage.getItem('cities');
+        return cities ? JSON.parse(cities) : [];
+    };
+
+    const setCity = (city: string): void => {
+        const cities: string[] = getCities();
+
+        if (cities.includes(city)) {
+            return;
+        }
+
+        cities.push(city);
+        localStorage.setItem('cities', JSON.stringify(cities));
+    }
+
+    const deleteCity = (city: string): void => {
+        let cities: string[] = getCities();
+        cities = cities.filter((c) => c !== city)
+        localStorage.setItem('cities', JSON.stringify(cities));
+    }
+
     const getTypesTemps = (): any[] => {
         const types: any = localStorage.getItem('types_temps');
         return types ? JSON.parse(types) : [];
@@ -39,6 +61,9 @@ const useSettings = () => {
     }
 
     return {
+        getCities,
+        setCity,
+        deleteCity,
         getTypesTemps,
         getTypeTemp,
         setTypeTemp,
