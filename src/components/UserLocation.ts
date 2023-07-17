@@ -1,6 +1,11 @@
 import React, {useEffect} from 'react';
+import useSettings from '../hooks/useSettings';
+import useForecast from '../hooks/useForecast';
 
 const UserLocation: React.FC = () => {
+    const {getCities} = useSettings();
+    const {getForecast} = useForecast();
+
     useEffect(() => {
         const getLocation = () => {
             if (navigator.geolocation) {
@@ -21,6 +26,10 @@ const UserLocation: React.FC = () => {
                                     )?.long_name;
 
                                     city ? localStorage.setItem('current_city', city) : localStorage.setItem('current_city', '');
+
+                                    if (!getCities().includes(city)) {
+                                        getForecast(city).then();
+                                    }
                                 }
                             }
                         });
