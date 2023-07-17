@@ -4,8 +4,14 @@ const useSettings = () => {
         return types ? JSON.parse(types) : [];
     }
 
-    const setTypeTemp = (key: string, value: string): void => {
-        localStorage.setItem(`forecast_type_temp_${key}`, value);
+    const getTypeTemp = (id: string): any => {
+        for (const type of getTypesTemps()) {
+            if (type.id === id) {
+                return type.type;
+            }
+        }
+
+        return 'C';
     }
 
     const deleteTypeTemp = (key: string): void => {
