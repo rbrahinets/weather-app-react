@@ -24,7 +24,14 @@ const useForecast = () => {
     );
     const {location} = useSelector((state: State) => state.location);
     const {forecasts} = useSelector((state: State) => state.forecasts);
-    const {setTypeTemp} = useSettings();
+    const {
+        getCities,
+        setCity,
+        deleteCity,
+        setTypeTemp,
+        updateTypeTemp,
+        deleteTypeTemp,
+    } = useSettings();
     const language: any = localStorage.getItem('i18nextLng');
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,11 +63,13 @@ const useForecast = () => {
     };
 
     const onSearch = (): void => {
-        if (!location) {
+        if (!location || getCities().includes(location.name)) {
             return;
         }
 
-        getForecast(location.name).then();
+        if (!getCities().includes(location.name)) {
+            getForecast(location.name).then();
+        }
     };
 
     const getForecast = async (city: string) => {
@@ -77,8 +86,15 @@ const useForecast = () => {
                 list: data.list,
             };
 
+            for (const forecast of forecasts) {
+                if (forecast.name === forecastData.name) {
+                    return;
+                }
+            }
+
             setTypeTemp(forecastData.id.toString(), 'C');
             setForecast(forecastData);
+            setCity(forecastData.name);
         } catch (error) {
             console.error({error});
         }
