@@ -40,7 +40,7 @@ const Header: React.FC = () => {
                         alt='lang'
                         className='img-lang'
                     />
-                    <span> {languages[currentLanguage].nativeName} </span>
+                    <span> {getLanguageName(currentLanguage)} </span>
                     <img
                         src={`${process.env.PUBLIC_URL}${isVisibleLanguages ? '/arrow-up.png' : '/arrow-down.png'}`}
                         alt={isVisibleLanguages ? 'arrow-up' : 'arrow-down'}
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
                                             setIsVisibleLanguages(!isVisibleLanguages);
                                         }}
                                     >
-                                        {languages[language].nativeName}
+                                        {getLanguageName(language)}
                                     </button>
                                 </li>
                             ))}
