@@ -20,6 +20,14 @@ const Header: React.FC = () => {
         dispatch
     );
 
+    const getLanguageName = (language: string): string => {
+        if (!language) {
+            language = 'en';
+        }
+
+        return languages[language].nativeName;
+    }
+
     return (
         <header className='header'>
             <div className='language-container'>
